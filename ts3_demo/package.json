@@ -1,0 +1,19 @@
+{
+  "name": "ts3_demo",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "Nick Liu",
+  "license": "ISC",
+  "devDependencies": {
+    "eslint": "^7.4.0",
+    "eslint-plugin-typescript": "^0.14.0",
+    "ts-node": "^8.10.2",
+    "typescript": "^3.9.6",
+    "typescript-eslint-parser": "^22.0.0"
+  }
+}
