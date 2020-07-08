@@ -36,3 +36,70 @@ let c: Color = Color.Blue;
 
 // any
 let notSure: any = 4;
+// notSure.ifItExists();
+notSure.toFixed();
+
+// void
+function warnUser(): void {
+    alert("This is my warning message");
+}
+
+let unusable: void = undefined;
+
+// type assertion
+let someValue: any = "this is a string";
+let strLength1: number = (<string>someValue).length;
+let strLength2: number = (someValue as string).length;
+
+// -----------------------------------------------
+
+function f() {
+    var a = 1;
+
+    a = 2;
+    var b = g();
+    a = 3;
+
+    return b;
+
+    function g() {
+        return a;
+    }
+}
+
+console.log(f());
+
+console
+for (var i = 0; i < 10; i++) {
+    console.log("i before: " + i);
+    setTimeout(function() {console.info(i);}, 100 * i);
+    console.log("i after: " + i);
+    (function(i) {
+        setTimeout(function() { console.info(i); }, 100 * i);
+    })(i);
+}
+
+function f1(input: boolean) {
+    let a = 100;
+
+    if (input) {
+        let b = a + 1;
+        return b;
+    }
+
+}
+
+function theCityThatAlwaysSleeps() {
+    let getCity;
+
+    if (true) {
+        let city = "Shanghai";
+        getCity = function() {
+            return city;
+        }
+    }
+
+    return getCity();
+}
+
+console.log(theCityThatAlwaysSleeps());
