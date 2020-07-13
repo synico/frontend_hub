@@ -35,3 +35,37 @@ interface StringArray {
 let myArray: StringArray;
 myArray = ["Bob", "Fred"];
 console.log(myArray[0]);
+
+// func type
+interface SearchFunc {
+    (source: string, subString: string): boolean;
+}
+
+let mySearch: SearchFunc;
+mySearch = function(source: string, subString: string) : boolean {
+    return (source.search(subString) == -1) ? false : true;
+}
+
+let mySearch2: SearchFunc;
+mySearch2 = function(src, sub) {
+    return (src.search(sub) == -1) ? false : true;
+}
+
+interface ClockInterface {
+    currentTime: Date;
+    new (hour: number, minute: number): ClockInterface;
+}
+
+class Clock implements ClockInterface {
+    constructor(h: number, m: number) { }
+}
+
+class Greeter {
+    greeting: string;
+    // constructor(message: string) {
+    //     this.greeting = message;
+    // }
+    greet() {
+        return "Hello, " + this.greet;
+    }
+}
