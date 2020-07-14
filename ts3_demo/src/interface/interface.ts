@@ -51,20 +51,22 @@ mySearch2 = function(src, sub) {
     return (src.search(sub) == -1) ? false : true;
 }
 
-interface ClockInterface {
+interface ClockInterface1 {
     currentTime: Date;
-    new (hour: number, minute: number): ClockInterface;
 }
 
-class Clock implements ClockInterface {
-    constructor(h: number, m: number) { }
+class Clock implements ClockInterface1 {
+    currentTime: Date;
+    constructor(nowTime: Date) {
+        this.currentTime = nowTime;
+    }
 }
 
 class Greeter {
     greeting: string;
-    // constructor(message: string) {
-    //     this.greeting = message;
-    // }
+    constructor(message: string) {
+        this.greeting = message;
+    }
     greet() {
         return "Hello, " + this.greet;
     }
