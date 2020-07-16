@@ -49,7 +49,9 @@ let unusable: void = undefined;
 // type assertion
 let someValue: any = "this is a string";
 let strLength1: number = (<string>someValue).length;
+console.log("someValue is number: " + (<number>someValue));
 let strLength2: number = (someValue as string).length;
+console.log("someValue is string? " + (someValue as string));
 
 // -----------------------------------------------
 
