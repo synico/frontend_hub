@@ -34,7 +34,7 @@ let tom: Animal = new Horse("Tommy the Palomino");
 sam.move();
 tom.move(34);
 
-class Rhino extends Animal {
+export class Rhino extends Animal {
     constructor() {
         super("Rhino");
     }
@@ -64,3 +64,9 @@ class Department {
         return this.name;
     }
 }
+
+export interface StringValidator {
+    isAcceptable(s: string): boolean;
+}
+
+let numberRegexp: string = "number";
