@@ -2,165 +2,90 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
 
-class Toggle extends React.Component {
+class NameForm extends React.Component {
   constructor(props) {
     super(props);
-    this.state = {isToggleOn: true};
-    // 为了在回调中使用'this'，这个绑定是必须的
-    this.handleClick = this.handleClick.bind(this);
+    this.state = {value: 'coconut'};
+
+    this.handleChange = this.handleChange.bind(this);
+    this.handleSubmit = this.handleSubmit.bind(this);
   }
 
-  handleClick() {
-    this.setState(state => ({
-      isToggleOn: !state.isToggleOn
-    }));
+  handleChange(event) {
+    this.setState({value: event.target.value});
+  }
+
+  handleSubmit(event) {
+    alert('name has been submitted: ' + this.state.value);
+    event.preventDefault();
   }
 
   render() {
     return (
-      <button onClick={this.handleClick}>
-        {this.state.isToggleOn ? 'ON' : 'OFF'}
-      </button>
-    );
-  }
-}
-
-
-////////////////////////////////////////////////
-
-class Clock extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {date: new Date()};
-  }
-
-  componentDidMount() {
-    this.timerId = setInterval(
-      () => this.tick(),
-      1000
-    );
-  }
-
-  componentWillUnmount() {
-    clearInterval(this.timerId);
-  }
-
-  tick() {
-    this.setState({
-      date: new Date()
-    });
-  }
-
-  render() {
-    return (
-      <div>
-        <h1>Hello, world</h1>
-        <h2>It is {this.state.date.toLocaleTimeString()}.</h2>
-      </div>
+      <form onSubmit={this.handleSubmit}>
+        <label>Name: 
+        <select value={this.state.value} onChange={this.handleChange}>
+          <option value="grapefruit">葡萄柚</option>
+          <option value="lime">酸橙</option>
+          <option value="coconut">椰子</option>
+          <option value="mango">芒果</option>
+        </select>
+        </label>
+        <input type="submit" value="SUBMIT" />
+      </form>
     );
   }
 
 }
 
-///////////////////////////////////////////////////////
-
-// class Square extends React.Component {
-
-//   render() {
-//     return (
-//       <button 
-//         className="square"
-//         onClick={() => this.props.onClick()}
-//       >
-//         {this.props.value}
-//       </button>
-//     );
-//   }
-// }
-
-function Square(props) {
-  return (
-    <button className="square" onClick={props.onClick}>
-      {props.valuex}
-    </button>
-  );
-}
-
-class Board extends React.Component {
+class Reservation extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      squares: Array(9).fill(null),
-      xIsNext: true,
+      isGoing: true,
+      numberOfGuests: 2
     };
+
+    this.handleInputChange = this.handleInputChange.bind(this);
   }
 
-  handleClick(i) {
-    const squares = this.state.squares.slice();
-    squares[i] = this.state.xIsNext ? 'X' : 'O';
+  handleInputChange(event) {
+    const target = event.target;
+    const value = target.name === 'isGoing' ? target.checked : target.value;
+    const name = target.name;
+
     this.setState({
-      squares: squares,
-      xIsNext: !this.state.xIsNext,
+      [name]: value
     });
   }
 
-  renderSquare(i) {
-    // console.log("start to render cell with i:" + i);
-    return (
-      <Square
-        valuex={this.state.squares[i]}
-        onClick={() => this.handleClick(i)}
-      />
-    ); 
-  }
-
   render() {
-    const status = 'Next player: X';
-
     return (
-      <div>
-        <div className="status">{status}</div>
-        <div className="board-row">
-          {this.renderSquare(0)}
-          {this.renderSquare(1)}
-          {this.renderSquare(2)}
-        </div>
-        <div className="board-row">
-          {this.renderSquare(3)}
-          {this.renderSquare(4)}
-          {this.renderSquare(5)}
-        </div>
-        <div className="board-row">
-          {this.renderSquare(6)}
-          {this.renderSquare(7)}
-          {this.renderSquare(8)}
-        </div>
-      </div>
+      <form>
+        <label>
+          参与:
+          <input
+            name="isGoing"
+            type="checkbox"
+            checked={this.state.isGoing}
+            onChange={this.handleInputChange} />
+        </label>
+        <br />
+        <label>
+          来宾人数：
+          <input
+            name="numberOfGuests"
+            type="number"
+            value={this.state.numberOfGuests}
+            onChange={this.handleInputChange} />
+        </label>
+      </form>
     );
   }
 }
-
-class Game extends React.Component {
-  render() {
-    return (
-      <div className="game">
-        <div className="game-board">
-          <Clock />
-          <Toggle />
-          <Board />
-        </div>
-        <div className="game-info">
-          <div>{/* status */}</div>
-          <ol>{/* TODO */}</ol>
-        </div>
-      </div>
-    );
-  }
-}
-
-// ========================================
 
 ReactDOM.render(
-  <Game />,
+  // <NameForm />,
+  <Reservation />,
   document.getElementById('root')
 );
