@@ -2,6 +2,29 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
 
+function FancyBoarder(props) {
+  return (
+    <div className={'FancyBoarder FancyBoarder-' + props.color}>
+      {props.children}
+    </div>
+  );
+}
+
+function WelcomeDialog() {
+  return (
+    <FancyBoarder color="blue">
+      <h1 className="Dialog-title">
+        Welcome
+      </h1>
+      <p className="Dialog-message">
+        Thank you for visiting our spacecraft!
+      </p>
+    </FancyBoarder>
+  );
+}
+
+////////////////////////////////////////////////////
+
 class NameForm extends React.Component {
   constructor(props) {
     super(props);
@@ -86,6 +109,7 @@ class Reservation extends React.Component {
 
 ReactDOM.render(
   // <NameForm />,
-  <Reservation />,
+  // <Reservation />,
+  <WelcomeDialog />,
   document.getElementById('root')
 );
