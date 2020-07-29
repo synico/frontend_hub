@@ -1,6 +1,9 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
+import app from './react_ctx';
+
+// import { add } from './math.js';
 
 function FancyBoarder(props) {
   return (
@@ -11,6 +14,9 @@ function FancyBoarder(props) {
 }
 
 function WelcomeDialog() {
+  import("./math").then(math => {
+    console.log(math.add(10, 12));
+  });
   return (
     <FancyBoarder color="blue">
       <h1 className="Dialog-title">
@@ -110,6 +116,7 @@ class Reservation extends React.Component {
 ReactDOM.render(
   // <NameForm />,
   // <Reservation />,
-  <WelcomeDialog />,
+  // <WelcomeDialog />,
+  <app.App />,
   document.getElementById('root')
 );

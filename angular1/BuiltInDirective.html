@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html ng-app>
+
+<head>
+    <meta http-equiv="content-type" content="text/html;charset=utf-8">
+    <title>BuiltIn Directive</title>
+    <script src="lib/angular.js"></script>
+</head>
+
+<body>
+
+    <label>someProperty = {{ someProperty }}</label><br>
+    <input type="checkbox"
+        ng-checked="someProperty"
+        ng-init="someProperty = true"
+        ng-model="someProperty">
+
+    <br>
+    <label>someProperty = {{ anotherProperty }}</label><br>
+    <input type="checkbox"
+        ng-checked="anotherProperty"
+        ng-init="anotherProperty = false"
+        ng-model="anotherProperty">
+
+    <script type="text/javascript">
+        // var app = angular.module('builtInApp', []);
+        // app.run(function($rootScope) {
+        //     $rootScope.theProp = 'Hello Angular';
+        // });
+    </script>
+</body>
+
+</html>

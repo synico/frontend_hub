@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html ng-app="myModule">
+    <head>
+            <meta http-equiv="content-type" content="text/html;charset=utf-8">
+            <title>How to load module</title>
+            <script src="lib/angular.js"></script>
+    </head>
+
+    <body>
+        <script type="text/javascript">
+            var app = angular.module('myModule', []);
+           
+            app.config(['$routeProvider', function($routeProvider) {
+                console.log("module config: " + $location.path);
+            }]);    
+        </script>
+    </body>
+</html>

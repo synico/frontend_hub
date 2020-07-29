@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html ng-app="myApp">
+<head>
+    <meta http-equiv="content-type" content="text/html;charset=utf-8">
+    <title>My Directive</title>
+    <script src="lib/angular.js"></script>
+</head>
+<body>
+
+    <!-- <my-directive></my-directive> -->
+    <input type="text" ng-model="inputUrl" />
+    <div my-directive
+        the-url="{{ inputUrl }}"
+        my-link-text="Click me to go to Baidu."></div>
+
+    <script type="text/javascript">
+        var app = angular.module('myApp', []);
+        app.directive('myDirective', function() {
+            return {
+                restrict: 'A',
+                replace: true,
+                scope: {
+                    myUrl: '@theUrl',
+                    myLinkText: '@'
+                },
+                template: '<a href="{{ myUrl }}">{{ myLinkText }}</a>'
+            };
+        });
+    </script>
+</body>
+</html>
