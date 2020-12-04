@@ -5,8 +5,12 @@ const webpack = require('webpack');
 
 module.exports = {
   entry: {
-    app: './src/index.js',
-    print: './src/print.js'
+    app: [
+      path.join(process.cwd(), 'src/index.js')
+    ],
+    print: [
+      path.join(process.cwd(), 'src/print.js')
+    ]
   },
   devtool: 'inline-source-map',
   devServer: {
