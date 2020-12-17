@@ -10,7 +10,6 @@ function extend<T, U>(first: T, second: U): T & U {
             (<any>result)[id] = (<any>second)[id];
         }
     }
-
     return result;
 }
 
@@ -24,21 +23,27 @@ class Person {
 }
 
 interface Loggable {
+    level: string;
     log(): void;
 }
 
 class ConsoleLogger implements Loggable {
-    log() {
+    level: string = "INFO";
+    constructor(level: string) {
+        this.level = level;
+    }
+    log(): void {
         console.log("console log");
     }
 }
 
-var jim = extend(new Person("Jim"), new ConsoleLogger());
+var jim = extend(new Person("Jim"), new ConsoleLogger("DEBUG"));
 var n = jim.name;
-jim.myLog();
+
 console.log("name: " + n);
+jim.log();
 if (jim.hasOwnProperty("log")) {
-    console.log(jim.log());
+    console.log("has own property 'log'");
 } else {
     console.log("does not have log property");
 }

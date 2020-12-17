@@ -12,10 +12,13 @@ function createClock(ctor: ClockConstructor, hour: number, minute: number): Cloc
 
 class DigitalClock implements ClockInterface {
     constructor(h: number, m: number) {
-        console.log("constructor of DigitalClock");
+        console.log("constructor of DigitalClock: " + `${h}`);
     }
     tick() {
         console.log("beep beep");
+    }
+    new() {
+        console.log("default constructor of DigitalClock");
     }
 }
 
@@ -52,6 +55,6 @@ function getCounter(): Counter {
 }
 
 let counter = getCounter();
-let sc = counter(10);
-console.log(sc);
-counter.reset();
+// let sc = counter(10);
+// console.log(sc);
+// counter.reset();
