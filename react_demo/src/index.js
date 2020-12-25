@@ -5,7 +5,12 @@ import ThemedButton from './context/themed-button';
 
 function Toolbar(props) {
   return (
-    <ThemedButton onClick={props.changeTheme}>
+    <ThemedButton {...props} 
+      models={() => [
+        import('./index1'),
+        import('./index2')
+      ]}
+      onClick={props.changeTheme}>
       Change Theme
     </ThemedButton>
   );
