@@ -14,6 +14,7 @@ export default function RedirectExample() {
     <ProvideAuth>
       <Router>
         <div>
+          <MyApp />
           <AuthButton />
 
           <ul>
@@ -93,6 +94,13 @@ function useProvideAuth() {
   };
 }
 
+function MyApp() {
+  let myState = useState(0);
+  const [num, updateNum] = myState;
+
+  return (<button onClick={() => updateNum(num => num + 1)}>{num}</button>);
+}
+
 function AuthButton() {
   let history = useHistory();
   let auth = useAuth();
@@ -110,6 +118,8 @@ function AuthButton() {
 }
 
 function PrivateRoute({ children, ...rest }) {
+  console.log("children: " + children);
+  console.log("rest: " + rest);
   let auth = useAuth();
   return (
     <Route 
