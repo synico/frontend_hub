@@ -27,8 +27,7 @@ export default function RedirectExample() {
           </ul>
 
           <Switch>
-            <Route path="/public">
-              <PublicPage />
+            <Route path="/public" component={PublicPage}>
             </Route>
             <Route path="/login">
               <LoginPage />
@@ -75,7 +74,7 @@ function useProvideAuth() {
 
   const signin = cb => {
     return fakeAuth.signin(() => {
-      setUser("user");
+      setUser("Nick");
       cb();
     });
   };
@@ -113,7 +112,7 @@ function AuthButton() {
 
   return auth.user ? (
     <p>
-      Welcome!{" "}
+      Welcome!{auth.user}
       <button onClick={() => {
         auth.signout(() => history.push("/"));
       }}>Sign out</button>
