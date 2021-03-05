@@ -15,6 +15,9 @@ interface SquareConfig {
     width?: number;
 }
 
+let mySquare = createSquare({ width: 100, colour: "red"} as SquareConfig);
+let mySquare1 = createSquare({ width: 100, color: "black" });
+
 function createSquare(config: SquareConfig): {color: string; area: number} {
     let newSquare = { color: "white", area: 100 };
     if (config.color) {
@@ -62,6 +65,16 @@ class Clock implements ClockInterface1 {
     }
 }
 
+class Clock1 implements ClockInterface1 {
+    currentTime: Date;
+    constructor(h: number, m: number) {
+        console.log("h: " + h + ", m: " + m);
+    }
+}
+
+let clock1 = new Clock1(12, 11);
+console.log(clock1);
+
 class Greeter {
     greeting: string;
     constructor(message: string) {
@@ -70,4 +83,23 @@ class Greeter {
     greet() {
         return "Hello, " + this.greet;
     }
+}
+
+class Animal {
+    name: string;
+}
+
+class Dog extends Animal {
+    breed: string;
+}
+
+interface NotOkay {
+    // [x: number]: Animal;
+    [x: string]: Dog;
+}
+
+interface NumberDictionary {
+    [index: string]: number;
+    length: number;
+    // name: string
 }
