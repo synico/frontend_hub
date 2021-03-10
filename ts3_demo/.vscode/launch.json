@@ -1,0 +1,40 @@
+{
+    // Use IntelliSense to learn about possible attributes.
+    // Hover to view descriptions of existing attributes.
+    // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "type": "node",
+            "request": "launch",
+            "name": "ts-node",
+            "skipFiles": [
+                "<node_internals>/**"
+            ],
+            "runtimeArgs": [
+                "-r",
+                "ts-node/register"
+            ],
+            "args": [
+                //"${workspaceFolder}/src/index.ts"
+                //"${workspaceFolder}/src/variableDeclare.ts"
+                //"${workspaceFolder}/src/interface/t1.ts"
+                //"${workspaceFolder}/src/class/cls1.ts"
+                //"${workspaceFolder}/src/class/cls2.ts"
+                //"${workspaceFolder}/src/func/func1.ts",
+                //"${workspaceFolder}/src/func/func2.ts",
+                //"${workspaceFolder}/src/genericType/genType1.ts"
+                //"${workspaceFolder}/src/enum/enum1.ts"
+                //"${workspaceFolder}/src/class/cls3.ts"
+                //"${workspaceFolder}/src/*/*.ts"
+                //"${workspaceFolder}/src/namespace/allInOne.ts"
+                //"${workspaceFolder}/src/genericType/advancedTypes.ts"
+                //"${workspaceFolder}/src/interface/t1.ts"
+                // "${workspaceFolder}/src/interface/interface.ts"
+                //"${workspaceFolder}/src/class/ArrayDemo.ts"
+                "${workspaceFolder}/src/modules/test.ts"
+            ],
+            "sourceMaps": true
+        }
+    ]
+}
