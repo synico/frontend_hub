@@ -1,10 +1,16 @@
-const visibilityFilter = (state = 'SHOW_ALL', action) => {
-  switch (action.type) {
-    case 'SET_VISIBILITY_FILTER':
-      return action.filter
-    default:
-      return state
+import produce, { setAutoFreeze } from 'immer'
+
+setAutoFreeze(false)
+
+const visibilityFilter = (state = 'SHOW_ALL', action) => 
+  produce(state, (draft) => {
+    switch (action.type) {
+      case 'SET_VISIBILITY_FILTER':
+        return action.filter
+      default:
+        return draft
+    }
   }
-}
+)
 
 export default visibilityFilter

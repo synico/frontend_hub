@@ -52,3 +52,12 @@ function filter5<T>(array: T[], f: (item: T) => boolean): T[] {
 let set = new Set;
 set.add(1).add(2);
 set.has(2);
+
+type A = number
+type B = A | string
+type Food = {
+    calories: number
+}
+interface test extends Food {
+
+}

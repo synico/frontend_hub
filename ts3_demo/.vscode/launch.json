@@ -32,7 +32,7 @@
                 //"${workspaceFolder}/src/interface/t1.ts"
                 // "${workspaceFolder}/src/interface/interface.ts"
                 //"${workspaceFolder}/src/class/ArrayDemo.ts"
-                "${workspaceFolder}/src/modules/test.ts"
+                "${workspaceFolder}/src/genericType/genType1.ts"
             ],
             "sourceMaps": true
         }

@@ -1,23 +1,29 @@
-const todos = (state = [], action) => {
-  switch (action.type) {
-    case 'ADD_TODO':
-      return [
-        ...state,
-        {
+import produce, { setAutoFreeze } from 'immer'
+
+setAutoFreeze(false)
+
+const todos = (state = [], action) => 
+  produce(state, (draft) => {
+    switch (action.type) {
+      case 'ADD_TODO':
+        draft.push({
           id: action.id,
           text: action.text,
           completed: false
-        }
-      ]
-    case 'TOGGLE_TODO':
-      return state.map(todo => 
-        (todo.id === action.id)
-          ? {...todo, completed: !todo.completed}
-          : todo
-      )
-    default:
-      return state
+        })
+        break
+      case 'TOGGLE_TODO':
+        draft.map(todo => {
+          if (todo.id === action.id) {
+            todo.completed = !todo.completed
+          }
+          return todo
+        })
+        break
+      default:
+        return draft
+    }
   }
-}
+)
 
 export default todos
