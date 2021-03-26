@@ -21,7 +21,7 @@ const todos = (state = [], action) =>
         })
         break
       default:
-        return draft
+        return state
     }
   }
 )

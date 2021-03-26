@@ -3,7 +3,7 @@ import { connect } from 'react-redux'
 import { addTodo } from '../actions'
 
 let AddTodo = ({ dispatch }) => {
-  let input 
+  let input = React.createRef()
 
   return (
     <div>
@@ -19,6 +19,7 @@ let AddTodo = ({ dispatch }) => {
       >
         <input ref={node => {
           input = node
+          console.log("input: " + node.outerHTML)
           }}
         />
 

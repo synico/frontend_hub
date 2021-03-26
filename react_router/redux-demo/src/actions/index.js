@@ -1,5 +1,6 @@
 let nextTodoId = 0
 export const addTodo = text => {
+  console.log("actions: [addTodo]: " + text)
   return {
     type: 'ADD_TODO',
     id: nextTodoId++,
