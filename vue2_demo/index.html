@@ -1,0 +1,54 @@
+<script src="https://cdn.jsdelivr.net/npm/vue@2"></script>
+
+<div id="app">
+  {{ message }}<br>
+  <span v-bind:title="message">
+    hover mouse
+  </span>
+  <p v-if="seen">you see me now</p>
+
+  <ol>
+    <li v-for="todo in todos">
+      {{ todo.text }}
+    </li>
+  </ol>
+
+  <button v-on:click="reverseMessage">reverse message</button>
+
+  <ol>
+    <todo-item
+      v-for="item in groceryList"
+      v-bind:todo="item"
+      v-bind:key="item.id">
+    </todo-item>
+  </ol>
+</div>
+
+<script>
+Vue.component('todo-item', {
+  props: ['todo'],
+  template: '<li>{{ todo.text }}</li>'
+})
+  var app = new Vue({
+  el: '#app',
+  data: {
+    message: 'Hello Vue!',
+    seen: true,
+    todos: [
+      { text: "learning javascript" },
+      { text: "learning vue" },
+      { text: "build a project" }
+    ],
+    groceryList: [
+      { id: 0, text: 'vegetable' },
+      { id: 1, text: 'cheese' },
+      { id: 2, text: 'whatever' }
+    ]
+  },
+  methods: {
+    reverseMessage: function() {
+      this.message = this.message.split('').reverse().join('');
+    }
+  }
+})
+</script>
